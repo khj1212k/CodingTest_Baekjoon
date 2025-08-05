@@ -1,7 +1,7 @@
 import re
 
 def solution(dartResult):
-    li = [re.match(r'(\d+)([A-Z])([*#]?)',i).groups() for i in re.findall(r'\d+[A-Z][*#]?', dartResult)]
+    li = re.findall(r'(\d+)([SDT])([*#]?)', dartResult)
     answer = [0]*4
     for idx, i in enumerate(li):
         n,v,s = i
