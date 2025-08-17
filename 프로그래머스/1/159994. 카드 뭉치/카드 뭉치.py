@@ -6,5 +6,4 @@ def solution(cards1, cards2, goal):
         elif idx2 < len(cards2) and g == cards2[idx2]: idx2+=1
         else : return 'No'
 
-
     return 'Yes'
