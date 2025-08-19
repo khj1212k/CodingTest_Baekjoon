@@ -6,7 +6,7 @@ def solution(want, number, discount):
     cnt = 0
     
     for i in range(len(discount)-n+1):
-        if not (want_c - Counter(discount[i:i+n])):
+        if want_c == Counter(discount[i:i+n]):
             cnt+=1
 
     return cnt
