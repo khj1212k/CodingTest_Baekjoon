@@ -10,13 +10,10 @@
 from math import ceil
 
 def solution(progresses, speeds):
-    answer = []
-    stack = []
+    answer, stack = [], []
     left = [ceil((100-p)/s) for p, s in zip(progresses,speeds)]
-    print(left)
+    cnt, maxx = 1, 0
     
-    cnt = 1
-    maxx = 0
     for l in left:
         if l > maxx:
             answer.append(cnt)
