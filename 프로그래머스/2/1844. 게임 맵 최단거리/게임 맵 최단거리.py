@@ -2,10 +2,8 @@ from collections import deque
 
 def solution(maps):
     # 상하좌우
-    dx = [-1, 1, 0, 0]
-    dy = [0, 0, -1, 1]
-    rows = len(maps)
-    cols = len(maps[0])
+    dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1]
+    rows, cols = len(maps), len(maps[0])
     
     def bfs(x,y):
         q = deque()
