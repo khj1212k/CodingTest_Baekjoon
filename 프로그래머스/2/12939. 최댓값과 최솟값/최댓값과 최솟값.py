@@ -1,2 +1,3 @@
 def solution(s):
-    return str(min(int(i) for i in s.split(' '))) + ' ' + str(max(int(i) for i in s.split(' ')))
+    s = [*map(int, s.split())]
+    return str(min(s))+' '+ str(max(s))
