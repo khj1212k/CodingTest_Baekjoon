@@ -1,10 +1,16 @@
 def solution(n):
-    cnt = 0
-    while n != 0:
-        if n%2 == 0:
-            n = n//2
-        else:
-            n -= 1
-            cnt += 1
+    ans = 0
+    
+    if n % 2 != 0 : # 홀수
+        ans += 1
+        n -=1
+        
+    while n not in [0,1]:
+            print(n)
+            n = n // 2
+            if n % 2 != 0:
+                ans += 1
+                n -= 1
 
-    return cnt
+
+    return ans if n == 0 else ans+1
