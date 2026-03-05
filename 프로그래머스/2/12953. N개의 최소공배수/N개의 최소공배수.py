@@ -1,8 +1,9 @@
 import math
 
 def solution(arr):
-    a = arr.pop()
-    
-    for b in arr:
-        a = abs(a * b) // math.gcd(a, b)
-    return a
+    lcm = arr[0]
+    for i in arr:
+        # A*B = LCM(A*B) * GCB(A*B)
+        lcm = i * lcm // math.gcd(i,lcm)
+
+    return lcm
