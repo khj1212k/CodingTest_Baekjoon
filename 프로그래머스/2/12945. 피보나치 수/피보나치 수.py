@@ -4,8 +4,6 @@ def solution(n):
     aa = 0
     
     for _ in range(1, n):
-        aa = b
-        b += a
-        a = aa
+        a, b = b ,a+b
         
     return b % 1234567
