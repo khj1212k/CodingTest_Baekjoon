@@ -1,10 +1,4 @@
 def solution(s):
     stack = []
-    
-    for char in s:
-        if stack and stack[-1] == char:
-            stack.pop(-1)
-        else:
-            stack.append(char)
-            
+    [stack.pop(-1) if stack and stack[-1] == char else stack.append(char) for char in s]
     return 0 if stack else 1
