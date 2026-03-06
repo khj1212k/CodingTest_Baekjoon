@@ -1,9 +1,12 @@
-
+from functools import reduce
 
 def solution(n):
-    F = [1,2] + [0] * n
+    if n == 1 : return 1
+    if n == 2 : return 2
+
+    a, b = 1,2
     
-    for i in range(2, n+1):
-        F[i] = (F[i-1] + F[i-2]) % 1234567
-    
-    return F[n-1]
+    for i in range(2, n):
+        a, b = b, a+b
+        
+    return b % 1234567
