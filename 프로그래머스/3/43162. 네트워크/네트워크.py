@@ -1,16 +1,24 @@
-def dfs(n, computers, visited, start):
-    visited[start]=True
-    for i in range(n):
-        if computers[start][i] == 1 and not visited[i]:
-            dfs(n, computers, visited, i)
-    
+from collections import deque
+
+def bfs(start, computers, visited):
+    q = deque([start])
+    visited[start] = True
+    while q:
+        x = q.popleft()
+        nx_li = computers[x]
+        for nxi in range(len(nx_li)):
+            if visited[nxi] or nx_li[nxi] == 0:
+                continue
+            visited[nxi] = True
+            q.append(nxi)
+
+
 def solution(n, computers):
     visited = [False] * n
     cnt = 0
     
-    for i in range(n): # 모든 컴퓨터를 순회
-        if not visited[i]: # 새로운 네트워크 발견!
-            cnt+=1
-            dfs(n,computers,visited,i)
-
+    for i in range(n):
+        if not visited[i]:
+            bfs(i, computers, visited)
+            cnt += 1
     return cnt
