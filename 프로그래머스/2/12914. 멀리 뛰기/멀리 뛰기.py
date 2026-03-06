@@ -1,12 +1,4 @@
-from functools import reduce
-
 def solution(n):
-    if n == 1 : return 1
-    if n == 2 : return 2
-
-    a, b = 1,2
-    
-    for i in range(2, n):
-        a, b = b, a+b
-        
-    return b % 1234567
+    a, b = 1,1
+    for i in range(n-1): a, b = b, (a+b) % 1234567
+    return b
