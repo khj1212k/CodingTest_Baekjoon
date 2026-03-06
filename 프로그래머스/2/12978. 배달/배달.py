@@ -1,23 +1,25 @@
 import heapq
-INF = 10**18
+
 
 def solution(N, road, K):
-    adj = [[] for _ in range(N+1)]
+    INF = float('inf')
+    
+    graph = [[] for _ in range(N+1)]
     for a,b,w in road:
-        adj[a].append((b,w))
-        adj[b].append((a,w))
+        graph[a].append((b,w))
+        graph[b].append((a,w))
     
     dist = [INF] * (N+1)
     dist[1] = 0
     pq = [(0,1)] # (거리, 노드)
     
     while pq:
-        d, x = heapq.heappop(pq)
-        if d > dist[x]: continue # 이미 더 짧은 거리로 방문 기록 있으면 넘김
-        for nx, w in adj[x]:
-            nd = d + w
-            if nd < dist[nx]:
-                dist[nx] = nd
-                heapq.heappush(pq, (nd,nx))
+        cur_dist, node = heapq.heappop(pq)
+        if cur_dist > dist[node]: continue # 이미 더 짧은 거리로 방문 기록 있으면 넘김
+        for next_node, cost in graph[node]:
+            new_dist = cur_dist + cost
+            if new_dist < dist[next_node]:
+                dist[next_node] = new_dist
+                heapq.heappush(pq, (new_dist,next_node))
 
-    return sum(1 for i in dist if i <= K)
+    return sum(d <= K for d in dist)
