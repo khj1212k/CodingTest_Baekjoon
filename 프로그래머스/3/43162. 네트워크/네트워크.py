@@ -1,24 +1,24 @@
 from collections import deque
 
-def bfs(start, computers, visited):
+def bfs(start, adj, visited):
     q = deque([start])
     visited[start] = True
+    
     while q:
         x = q.popleft()
-        nx_li = computers[x]
+        nx_li = adj[x]
         for nxi in range(len(nx_li)):
             if visited[nxi] or nx_li[nxi] == 0:
                 continue
-            visited[nxi] = True
             q.append(nxi)
-
+            visited[nxi] = True
+        
 
 def solution(n, computers):
+    answer = 0
     visited = [False] * n
-    cnt = 0
-    
     for i in range(n):
         if not visited[i]:
             bfs(i, computers, visited)
-            cnt += 1
-    return cnt
+            answer += 1
+    return answer
