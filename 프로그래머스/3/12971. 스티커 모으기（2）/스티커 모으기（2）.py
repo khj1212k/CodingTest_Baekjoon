@@ -1,4 +1,4 @@
-def dp(sticker):
+def dp_func(sticker):
     dp = [0] * len(sticker)
     
     for i in range(len(sticker)):
@@ -9,6 +9,6 @@ def dp(sticker):
     return dp[-1]
 
 def solution(sticker):
-    return max(dp(sticker[1:]), dp(sticker[:-1])) if len(sticker) != 1 else sticker[0]
+    return max(dp_func(sticker[1:]), dp_func(sticker[:-1])) if len(sticker) != 1 else sticker[0]
     
     
