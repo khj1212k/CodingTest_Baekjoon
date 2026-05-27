@@ -1,4 +1,4 @@
-from collections import defaultdict
+# X
 
 def solution(sales, links):
     n = len(sales)
@@ -14,13 +14,13 @@ def solution(sales, links):
         
         if not teams[x]: return # 말단직원
         
-        attend_child = False
+        attend_child = False # 자식참석? 팀장참석?
         extra_cost = float('inf')
         
-        for child in teams[x]: # 직속 부하들 먼저 계산
+        for child in teams[x]: # 직속 부하들 먼저 비용 계산
             dfs(child)
             
-            dp[x][1] += min(dp[child][0], dp[child][1]) # x참석시
+            dp[x][1] += min(dp[child][0], dp[child][1]) # 팀장x 참석시
             
             # x불참시, 직속 중 1명 참석해야함
             dp[x][0] += min(dp[child][0], dp[child][1]) 
@@ -37,5 +37,5 @@ def solution(sales, links):
             dp[x][0] += extra_cost
             
     dfs(1) # ceo부터 시작
-        
+    # print(dp)
     return min(dp[1][0], dp[1][1])
